@@ -1,0 +1,49 @@
+@mixin nav-button($color: #403f3d) {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background-color: transparent;
+  border: 0;
+  position: relative;
+  font-family: InterSemiBold, serif;
+  font-size: 16px;
+  line-height: 150%;
+  color: $color;
+  padding-bottom: 4px;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:visited {
+    color: $color;
+  }
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: $color;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  @media (hover: hover) {
+    &.active::before,
+    &:hover:before {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+  .button-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@mixin hover-image {
+  transform: scale(1);
+}
